@@ -22,25 +22,41 @@ public class Solution {
     public string solution(string s) {
         string answer = "";
         
-        string[] splitString = s.Split(' ');
+        // string[] splitString = s.Split(' ');
         
-        StringBuilder stringList = new StringBuilder();
+        // StringBuilder stringList = new StringBuilder();
         
-        for(int i = 0; i < splitString.Length; i++) {
-            if(splitString[i] == "") {
-                stringList.Append(" ");
-            } else {
+        // for(int i = 0; i < splitString.Length; i++) {
+        //     if(splitString[i] == "") {
+        //         stringList.Append(" ");
+        //     } else {
 
-                stringList.Append(splitString[i][0].ToString().ToUpper());
-                stringList.Append(splitString[i].Substring(1).ToLower());
+        //         stringList.Append(splitString[i][0].ToString().ToUpper());
+        //         stringList.Append(splitString[i].Substring(1).ToLower());
                 
-                if(i != splitString.Length - 1){
-                    stringList.Append(" ");
-                }
+        //         if(i != splitString.Length - 1){
+        //             stringList.Append(" ");
+        //         }
+        //     }
+        // }
+        
+        // answer = stringList.ToString();
+        
+        s = s.ToLower();
+
+        char[] charList = s.ToCharArray();
+
+        charList[0] = Char.ToUpper(charList[0]);
+        for (int i = 0; i < charList.Length; i++) {
+            if (charList[i] == ' ' &&
+                i != charList.Length - 1) {
+                charList[i + 1] = Char.ToUpper(charList[i + 1]);         
             }
         }
         
-        answer = stringList.ToString();
+        for (int i = 0; i < charList.Length; i++) {
+            answer += charList[i];
+        }
         
         return answer;
     }
